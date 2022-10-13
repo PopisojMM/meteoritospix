@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/lowFrequency_explosion_000.ogg-56fa935097e514336ff40a3c4927c3c6.oggstr"
+
+[deps]
+
+source_file="res://recursos/SFX/Audio/lowFrequency_explosion_000.ogg"
+dest_files=[ "res://.import/lowFrequency_explosion_000.ogg-56fa935097e514336ff40a3c4927c3c6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
