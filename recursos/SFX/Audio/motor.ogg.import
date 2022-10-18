@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/motor.ogg-e6056ea6c64c5e4d5e4aa7c5405910f3.oggstr"
+
+[deps]
+
+source_file="res://recursos/SFX/Audio/motor.ogg"
+dest_files=[ "res://.import/motor.ogg-e6056ea6c64c5e4d5e4aa7c5405910f3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/explosionCrunch_004.ogg-b42f13f6f6215c2a83cc0d0765fb
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
