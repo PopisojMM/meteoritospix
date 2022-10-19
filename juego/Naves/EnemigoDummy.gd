@@ -4,6 +4,11 @@ extends Node2D
 ## Atributos
 var hitpoints:float = 10.0
 
+## Metodos
+
+func _process(delta: float) -> void:
+	$Canion.set_esta_disparando(true)
+
 ## Metodos Custom
 func recibir_danio(danio: float) -> void:
 	hitpoints -= danio
