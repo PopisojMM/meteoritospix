@@ -85,11 +85,24 @@ func controlar_meteoritos_restante() -> void:
 			tiempo_transicion_camara * 0.10
 		)
 
+func crear_posicion_aleatoria(rango_horizontal: float, rango_vertical:float) -> Vector2:
+	randomize()
+	var rand_x = rand_range(-rango_horizontal, rango_horizontal)
+	var rand_y = rand_range(-rango_vertical, rango_vertical)
+	return Vector2 (rand_x, rand_y)
+
 ## Conexion señales externas
 func _on_disparo(proyectil:Proyectil) -> void:
-	add_child(proyectil)
+	contenedor_proyectiles.add_child(proyectil)
 
-func _on_nave_destruida(posicion: Vector2) -> void:
+func _on_nave_destruida(nave: Player, posicion: Vector2) -> void:
+	if nave is Player:
+		transicion_camaras(
+			posicion,
+			posicion + crear_posicion_aleatoria(-200.0, 200.0),
+			camara_nivel,
+			tiempo_transicion_camara
+		)
 	var new_explosion:Node2D = explosion.instance()
 	new_explosion.global_position = posicion
 	add_child(new_explosion)
