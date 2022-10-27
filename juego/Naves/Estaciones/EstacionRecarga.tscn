@@ -13,7 +13,7 @@ height = 137.171
 [sub_resource type="CircleShape2D" id=2]
 radius = 514.232
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "activado"
 length = 5.0
 loop = true
@@ -43,8 +43,7 @@ tracks/1/keys = {
 "values": [ 0.0, 72.0, 144.0, 216.0, 288.0, 360.0 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "default"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AreaRecarga/SpriteZonaRecarga:scale")
 tracks/0/interp = 1
@@ -103,8 +102,8 @@ shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "activado"
-anims/activado = SubResource( 4 )
-anims/default = SubResource( 3 )
+anims/activado = SubResource( 3 )
+anims/default = SubResource( 4 )
 
 [node name="CargaSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )

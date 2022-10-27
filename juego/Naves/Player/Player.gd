@@ -58,6 +58,9 @@ func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 func _process(delta: float) -> void:
 	player_input()
 
+func _ready() -> void:
+	DatosJuego.set_player_actual(self)
+
 ## Metodos Custom
 func player_input() -> void:
 	if not esta_input_activo():

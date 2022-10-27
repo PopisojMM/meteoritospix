@@ -10,7 +10,7 @@ export var energia:float = 6.0
 export var radio_energia_entregada: float = 0.05
 
 ## Atributos
-var nave_player: Player = null
+var nave_player:Player = null
 var player_en_zona:bool = false
 
 ## Metodos
@@ -47,7 +47,7 @@ func _on_AreaColision_body_entered(body: Node) -> void:
 func _on_AreaRecarga_body_entered(body):
 	if body is Player:
 		nave_player = body
-	player_en_zona = true
+		player_en_zona = true
 	body.set_gravity_scale(0.1)
 
 func _on_AreaRecarga_body_exited(body):
