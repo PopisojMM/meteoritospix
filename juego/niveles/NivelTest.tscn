@@ -1,10 +1,6 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=12 format=2]
-=======
-[gd_scene load_steps=14 format=2]
->>>>>>> Stashed changes
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://juego/Naves/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://juego/Naves/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://juego/niveles/Nivel.gd" type="Script" id=2]
 [ext_resource path="res://default_env.tres" type="Environment" id=3]
 [ext_resource path="res://juego/Explosiones/Explosion.tscn" type="PackedScene" id=4]
@@ -15,11 +11,7 @@
 [ext_resource path="res://juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=9]
 [ext_resource path="res://recursos/Backgrounds/darkPurple.png" type="Texture" id=10]
 [ext_resource path="res://juego/niveles/CamaraJuego.gd" type="Script" id=11]
-<<<<<<< Updated upstream
-=======
 [ext_resource path="res://juego/Naves/Enemigos/EnemigoInterceptor.tscn" type="PackedScene" id=12]
-[ext_resource path="res://juego/Naves/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=13]
->>>>>>> Stashed changes
 
 [node name="NivelTest" type="Node2D"]
 script = ExtResource( 2 )
@@ -28,29 +20,39 @@ meteorito = ExtResource( 6 )
 explosion_meteorito = ExtResource( 7 )
 sector_meteoritos = ExtResource( 5 )
 tiempo_transicion_camara = 2.0
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 381.534, 543.617 )
-gravity_scale = 0.05
+enemigo_interceptor = ExtResource( 12 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 256, 256 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( 4.75488, 0 )
+scale = Vector2( 256, 256 )
+texture = ExtResource( 10 )
+
 [node name="TriggersLLuviaMeteoritos" type="Node" parent="."]
 
 [node name="SectorDePeligro" parent="TriggersLLuviaMeteoritos" instance=ExtResource( 9 )]
-<<<<<<< Updated upstream
-position = Vector2( 1504.44, 542.445 )
-=======
-position = Vector2( -506.216, -376.807 )
->>>>>>> Stashed changes
+position = Vector2( 1077.73, -227.021 )
 tipo_peligro = "Meteorito"
 numero_peligros = 2
 
 [node name="ContenedorEstaciones" type="Node" parent="."]
 
 [node name="EstacionRecarga" parent="ContenedorEstaciones" instance=ExtResource( 8 )]
-position = Vector2( -519.087, 435.933 )
+
+[node name="TriggersInterceptores" type="Node" parent="."]
+
+[node name="SectorDePeligro" parent="TriggersInterceptores" instance=ExtResource( 9 )]
+position = Vector2( 1088.84, 385.136 )
+tipo_peligro = "Enemigo"
+numero_peligros = 3
 
 [node name="CamaraNivel" type="Camera2D" parent="."]
 script = ExtResource( 11 )
@@ -59,24 +61,7 @@ script = ExtResource( 11 )
 
 [node name="TweenCamara" type="Tween" parent="."]
 
-<<<<<<< Updated upstream
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_ignore_camera_zoom = true
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 256, 256 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground"]
-scale = Vector2( 256, 256 )
-texture = ExtResource( 10 )
-=======
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -39.8046, -241.758 )
-gravity_scale = 0.0
-hitpoints = 40.0
-
-[node name="BaseEnemiga" parent="." instance=ExtResource( 13 )]
-position = Vector2( 1414.3, -294.085 )
->>>>>>> Stashed changes
+position = Vector2( 689.736, 76.843 )
 
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]

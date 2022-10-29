@@ -8,6 +8,7 @@ export var meteorito:PackedScene = null
 export var explosion_meteorito:PackedScene = null
 export var sector_meteoritos:PackedScene = null
 export var tiempo_transicion_camara:float = 1.5
+export var enemigo_interceptor:PackedScene = null
 
 
 ## Atributos Onready
@@ -15,14 +16,17 @@ onready var contenedor_proyectiles:Node
 onready var contenedor_meteoritos:Node
 onready var contenedor_sector_meteoritos:Node
 onready var camara_nivel:Camera2D = $CamaraNivel
+onready var contenedor_enemigos:Node
 
 ## Atributos
 var meteoritos_totales:int = 0
+var player:Player = null
 
 ## Metodos
 func _ready() -> void:
 	conectar_seniales()
 	crear_contenedores()
+	player = DatosJuego.get_player_actual()
 
 ## Metodos Custom
 func conectar_seniales() -> void:
@@ -44,6 +48,9 @@ func crear_contenedores() -> void:
 	contenedor_sector_meteoritos = Node.new()
 	contenedor_sector_meteoritos.name = "ContenedorSectormeteoritos"
 	add_child(contenedor_sector_meteoritos)
+	contenedor_enemigos = Node.new()
+	contenedor_enemigos.name = "ContenedorEnemigos"
+	add_child(contenedor_enemigos)
 
 func transicion_camaras(desde: Vector2, hasta: Vector2, camara_actual:Camera2D, tiempo_transicion:float) -> void:
 	$TweenCamara.interpolate_property(
@@ -86,6 +93,13 @@ func controlar_meteoritos_restante() -> void:
 			$Player/CamaraPlayer,
 			tiempo_transicion_camara * 0.10
 		)
+
+func crear_sector_enemigos(num_enemigos: int) -> void:
+	for i in range(num_enemigos):
+		var _new_interceptor:EnemigoInterceptor = enemigo_interceptor.instance()
+		var spawn_pos: Vector2 = crear_posicion_aleatoria(1000.0, 800.0)
+		_new_interceptor.global_position = player.global_position + spawn_pos
+		contenedor_enemigos.add_child(_new_interceptor)
 
 func crear_posicion_aleatoria(rango_horizontal: float, rango_vertical:float) -> Vector2:
 	randomize()
@@ -130,7 +144,7 @@ func _on_nave_en_sector_peligro(centro_cam:Vector2, tipo_peligro:String, num_pel
 	if tipo_peligro == "Meteorito":
 		crear_sector_meteoritos(centro_cam, num_peligros)
 	elif tipo_peligro == "Enemigo":
-		pass
+		crear_sector_enemigos(num_peligros)
 
 func _on_spawn_meteoritos(pos_spawn: Vector2, dir_meteorito: Vector2, tamanio: float) -> void:
 	var new_meteorito:Meteorito = meteorito.instance()
