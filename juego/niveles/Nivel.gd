@@ -135,7 +135,7 @@ func _on_nave_destruida(nave: Player, posicion: Vector2) -> void:
 	new_explosion.global_position = posicion
 	add_child(new_explosion)
 
-func _on_base_destruida(pos_partes: Array) -> void:
+func _on_base_destruida(base, pos_partes: Array) -> void:
 	for posicion in pos_partes:
 		crear_explosion(posicion)
 		yield(get_tree().create_timer(0.5),"timeout")
