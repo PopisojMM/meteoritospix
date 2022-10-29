@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/meteorGrey_big4.png-2c9661187891389ca5be702f4314806d.stex"
+path="res://.import/spaceStation_024.png-57bd79c74746804bb0ae1e6d6dc84f11.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://recursos/Meteors/meteorGrey_big4.png"
-dest_files=[ "res://.import/meteorGrey_big4.png-2c9661187891389ca5be702f4314806d.stex" ]
+source_file="res://recursos/Naves/spaceStation_024.png"
+dest_files=[ "res://.import/spaceStation_024.png-57bd79c74746804bb0ae1e6d6dc84f11.stex" ]
 
 [params]
 

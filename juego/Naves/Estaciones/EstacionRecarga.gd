@@ -47,9 +47,13 @@ func _on_AreaColision_body_entered(body: Node) -> void:
 func _on_AreaRecarga_body_entered(body):
 	if body is Player:
 		nave_player = body
+<<<<<<< Updated upstream
 	player_en_zona = true
 	body.set_gravity_scale(0.1)
+=======
+		player_en_zona = true
+>>>>>>> Stashed changes
 
 func _on_AreaRecarga_body_exited(body):
 	player_en_zona = false
-	body.set_gravity_scale(0.0)
+
