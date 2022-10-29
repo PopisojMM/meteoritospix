@@ -11,5 +11,5 @@ dest_files=[ "res://.import/lowFrequency_explosion_000.ogg-56fa935097e514336ff40
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

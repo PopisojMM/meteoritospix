@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://juego/Naves/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://juego/niveles/Nivel.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://juego/niveles/CamaraJuego.gd" type="Script" id=11]
 [ext_resource path="res://juego/Naves/Enemigos/EnemigoInterceptor.tscn" type="PackedScene" id=12]
 [ext_resource path="res://juego/Naves/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=13]
+[ext_resource path="res://juego/Naves/Estaciones/ReleMasa.tscn" type="PackedScene" id=14]
 
 [node name="NivelTest" type="Node2D"]
 script = ExtResource( 2 )
@@ -20,8 +21,8 @@ explosion = ExtResource( 4 )
 meteorito = ExtResource( 6 )
 explosion_meteorito = ExtResource( 7 )
 sector_meteoritos = ExtResource( 5 )
-tiempo_transicion_camara = 2.0
 enemigo_interceptor = ExtResource( 12 )
+rele_masa = ExtResource( 14 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
@@ -55,9 +56,6 @@ position = Vector2( 1050.7, 1003.86 )
 tipo_peligro = "Enemigo"
 numero_peligros = 3
 
-[node name="BaseEnemiga" parent="TriggersInterceptores/SectorDePeligro" instance=ExtResource( 13 )]
-position = Vector2( 1127.13, -1161.51 )
-
 [node name="CamaraNivel" type="Camera2D" parent="."]
 script = ExtResource( 11 )
 
@@ -66,6 +64,11 @@ script = ExtResource( 11 )
 [node name="TweenCamara" type="Tween" parent="."]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 689.736, 76.843 )
+position = Vector2( 2435.48, -1200.45 )
+
+[node name="ContenedorBasesEnemigas" type="Node" parent="."]
+
+[node name="BaseEnemiga" parent="ContenedorBasesEnemigas" instance=ExtResource( 13 )]
+position = Vector2( 4008.9, -1153.97 )
 
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]

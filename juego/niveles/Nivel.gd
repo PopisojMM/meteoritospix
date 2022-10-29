@@ -7,8 +7,9 @@ export var explosion:PackedScene = null
 export var meteorito:PackedScene = null
 export var explosion_meteorito:PackedScene = null
 export var sector_meteoritos:PackedScene = null
-export var tiempo_transicion_camara:float = 1.5
+export var tiempo_transicion_camara:float = 2.0
 export var enemigo_interceptor:PackedScene = null
+export var rele_masa:PackedScene = null
 
 
 ## Atributos Onready
@@ -21,11 +22,14 @@ onready var contenedor_enemigos:Node
 ## Atributos
 var meteoritos_totales:int = 0
 var player:Player = null
+var numero_bases_enemigas = 0
 
 ## Metodos
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	conectar_seniales()
 	crear_contenedores()
+	numero_bases_enemigas = contabilizar_bases_enemigas()
 	player = DatosJuego.get_player_actual()
 
 ## Metodos Custom
@@ -119,6 +123,21 @@ func crear_explosion(
 			add_child(new_explosion)
 			yield(get_tree().create_timer(intervalo),"timeout")
 
+func contabilizar_bases_enemigas() -> int:
+	return $ContenedorBasesEnemigas.get_child_count()
+
+func crear_rele() -> void:
+	var new_rele_masa:ReleDeMasa = rele_masa.instance()
+	var pos_aleatoria:Vector2 = crear_posicion_aleatoria(400.0, 200.0)
+	var margen:Vector2 = Vector2(600.0, 600.0)
+	if pos_aleatoria.x < 0:
+		margen.x *= -1
+	if pos_aleatoria.y < 0:
+		margen.y *= -1
+	
+	new_rele_masa.global_position = player.global_position + (margen + pos_aleatoria)
+	add_child(new_rele_masa)
+
 ## Conexion señales externas
 func _on_disparo(proyectil:Proyectil) -> void:
 	contenedor_proyectiles.add_child(proyectil)
@@ -139,6 +158,10 @@ func _on_base_destruida(base, pos_partes: Array) -> void:
 	for posicion in pos_partes:
 		crear_explosion(posicion)
 		yield(get_tree().create_timer(0.5),"timeout")
+	
+	numero_bases_enemigas -= 1
+	if numero_bases_enemigas == 0:
+		crear_rele()
 
 func _on_nave_en_sector_peligro(centro_cam:Vector2, tipo_peligro:String, num_peligros:int) -> void:
 	if tipo_peligro == "Meteorito":

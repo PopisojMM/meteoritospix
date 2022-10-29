@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://juego/Naves/Estaciones/AreaAtraccion.tscn" type="PackedScene" id=1]
 [ext_resource path="res://recursos/Naves/spaceStation_024.png" type="Texture" id=2]
@@ -12,8 +12,8 @@
 [ext_resource path="res://juego/Naves/Estaciones/RutaEnemigo.gd" type="Script" id=10]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 64.1556
-height = 389.988
+radius = 62.7729
+height = 286.646
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -69,6 +69,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0, -360.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("AreaColision/CollisionShape2D:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 5.0
@@ -97,12 +109,31 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0, 360.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("AreaColision/CollisionShape2D:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Curve2D" id=5]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -387.239, -9.73816, -18.3786, 16.3365, 18.3786, -16.3365, -377.029, -71.0001, 1.02103, 26.5468, -1.02103, -26.5468, -343.335, -113.883, 0, 0, 0, 0, -377.782, -187.881, -2.25603, 30.9384, 2.25603, -30.9384, -366.009, -244.221, 21.4417, 45.9464, -21.4417, -45.9464, -324.805, -314.857, -22.4627, 22.4627, 22.4627, -22.4627, -281.079, -380.447, -13.2734, 34.7151, 13.2734, -34.7151, -199.369, -364.036, 0, 0, 0, 0, -133.002, -392.625, 0, 0, 0, 0, -68.677, -400.793, -27.5679, -39.8202, 27.5679, 39.8202, -14.5623, -394.667, -28.5889, 40.8413, 28.5889, -40.8413, 23.2159, -391.604, -45.9464, 25.5258, 45.9464, -25.5258, 68.1412, -401.814, 0, 0, 0, 0, 140.634, -385.478, -27.4855, -13.2672, 27.4855, 13.2672, 228.661, -386.272, 0, 0, 0, 0, 276.744, -353.745, 2.04206, -37.7782, -2.04206, 37.7782, 341.798, -281.62, 0, 0, 0, 0, 377.514, -204.755, 0, 0, 0, 0, 367.303, -166.977, -13.2734, -43.9044, 13.2734, 43.9044, 364.24, -88.3576, -3.06309, -47.9885, 3.06309, 47.9885, 411.208, -35.264, 19.3996, -29.6099, -19.3996, 29.6099, 381.598, 18.8507, 0, 0, 0, 0, 370.367, 167.921, 19.3996, -22.4627, -19.3996, 22.4627, 363.219, 260.835, 34.7151, -19.3996, -34.7151, 19.3996, 333.609, 295.55, 60.2409, 12.2524, -60.2409, -12.2524, 265.2, 309.845, 61.2619, 5.10516, -61.2619, -5.10516, 227.422, 369.065, 31.652, 5.10516, -31.652, -5.10516, 96.7302, 378.254, 43.9044, 11.2313, -43.9044, -11.2313, -12.5202, 385.401, 46.9674, -15.3155, -46.9674, 15.3155, -144.233, 354.77, 0, 0, 0, 0, -272.883, 343.539, 49.0095, 21.4417, -49.0095, -21.4417, -328.019, 270.024, -5.10516, 26.5468, 5.10516, -26.5468, -333.124, 143.417, 0, 0, 0, 0, -373.965, 10.6825, 0, 0, 0, 0, -387.239, -9.73816 )
+}
 
 [node name="BaseEnemiga" type="Node2D"]
 z_index = 45
 z_as_relative = false
 script = ExtResource( 6 )
 orbital = ExtResource( 8 )
+numero_orbitales = 8
+intervalo_spawn = 1.5
 
 [node name="Sprites" type="Node2D" parent="."]
 
@@ -125,11 +156,11 @@ texture = ExtResource( 5 )
 
 [node name="AreaColision" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 25
+collision_mask = 9
 script = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaColision"]
-position = Vector2( -1.25989, 32.7579 )
+scale = Vector2( -1.03594, 1.13257 )
 shape = SubResource( 1 )
 
 [node name="AreaAtraccion" parent="." instance=ExtResource( 1 )]
@@ -169,9 +200,13 @@ position = Vector2( -400, 0 )
 
 [node name="RutaEnemigo" type="Path2D" parent="."]
 position = Vector2( 5.30606, 1.60727 )
+curve = SubResource( 5 )
 script = ExtResource( 10 )
+
+[node name="TimerSpawnerEnemigos" type="Timer" parent="."]
 
 [connection signal="body_entered" from="AreaColision" to="." method="_on_AreaColision_body_entered"]
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="timeout" from="TimerSpawnerEnemigos" to="." method="_on_TimerSpawnerEnemigos_timeout"]
 
 [editable path="AreaAtraccion"]
