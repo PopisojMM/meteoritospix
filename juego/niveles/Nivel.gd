@@ -26,6 +26,7 @@ var numero_bases_enemigas = 0
 
 ## Metodos
 func _ready() -> void:
+	Eventos.emit_signal("nivel_iniciado")
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	conectar_seniales()
 	crear_contenedores()
@@ -150,6 +151,7 @@ func _on_nave_destruida(nave: Player, posicion: Vector2) -> void:
 			camara_nivel,
 			tiempo_transicion_camara
 		)
+	$RestartTimer.start()
 	var new_explosion:Node2D = explosion.instance()
 	new_explosion.global_position = posicion
 	add_child(new_explosion)
@@ -191,3 +193,8 @@ func _on_spawn_orbital(enemigo: EnemigoOrbital) -> void:
 func _on_TweenCamara_tween_completed(object: Object, _key: NodePath) -> void:
 	if object.name == "CameraPlayer":
 		object.global_position = $Player.global_position
+
+func _on_RestartTimer_timeout() -> void:
+	Eventos.emit_signal("nivel_terminado")
+	yield(get_tree().create_timer(1.0),"timeout")
+	get_tree().reload_current_scene()
