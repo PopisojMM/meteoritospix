@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://icono_juego.png" type="Texture" id=1]
 [ext_resource path="res://juego/UI/HUD.gd" type="Script" id=2]
+[ext_resource path="res://juego/UI/ContenedorInformacion.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -40,10 +41,11 @@ script = ExtResource( 2 )
 [node name="FadeCanvas" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="FadeCanvas"]
-modulate = Color( 1, 1, 1, 0 )
-margin_top = -4.48987
-margin_right = 1919.0
-margin_bottom = 1074.51
+visible = false
+margin_left = 1.25995
+margin_top = -5.11981
+margin_right = 1920.26
+margin_bottom = 1073.88
 mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
@@ -66,3 +68,50 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FadeCanvas"]
 anims/default = SubResource( 1 )
 anims/fade_in = SubResource( 2 )
+
+[node name="InfoZonaRecarga" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 1 )
+
+[node name="Label" parent="InfoZonaRecarga" index="1"]
+margin_left = 61.5502
+margin_top = 20.63
+margin_right = 241.55
+margin_bottom = 81.63
+text = " ZONA DE
+RECARGA"
+
+[node name="InfoMeteoritos" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 1 )
+margin_left = 10.0
+margin_top = 963.0
+margin_right = 358.0
+margin_bottom = 1067.0
+auto_ocultar = true
+
+[node name="Label" parent="InfoMeteoritos" index="1"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 28.0
+margin_top = -43.0
+margin_right = -60.0
+margin_bottom = 50.0
+
+[node name="InfoTiempoRestante" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 1 )
+margin_left = 1583.96
+margin_top = 11.1065
+margin_right = 1904.96
+margin_bottom = 115.106
+
+[node name="Label" parent="InfoTiempoRestante" index="1"]
+margin_left = 18.3139
+margin_top = 17.1715
+margin_right = 310.314
+margin_bottom = 78.1715
+text = "TIEMPO RESTANTE
+              mm:ss"
+
+[editable path="InfoZonaRecarga"]
+[editable path="InfoMeteoritos"]
+[editable path="InfoTiempoRestante"]
