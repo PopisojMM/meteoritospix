@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://icono_juego.png" type="Texture" id=1]
 [ext_resource path="res://juego/UI/HUD.gd" type="Script" id=2]
 [ext_resource path="res://juego/UI/ContenedorInformacion.tscn" type="PackedScene" id=3]
+[ext_resource path="res://juego/UI/ContenedorInformacionEnergia.tscn" type="PackedScene" id=4]
+[ext_resource path="res://juego/UI/MiniMapa/MiniMapa.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -69,8 +71,9 @@ __meta__ = {
 anims/default = SubResource( 1 )
 anims/fade_in = SubResource( 2 )
 
-[node name="InfoZonaRecarga" parent="." instance=ExtResource( 3 )]
-modulate = Color( 1, 1, 1, 1 )
+[node name="InfoZonaRecarga" parent="." groups=[
+"contenedor_info",
+] instance=ExtResource( 3 )]
 
 [node name="Label" parent="InfoZonaRecarga" index="1"]
 margin_left = 61.5502
@@ -80,8 +83,9 @@ margin_bottom = 81.63
 text = " ZONA DE
 RECARGA"
 
-[node name="InfoMeteoritos" parent="." instance=ExtResource( 3 )]
-modulate = Color( 1, 1, 1, 1 )
+[node name="InfoMeteoritos" parent="." groups=[
+"contenedor_info",
+] instance=ExtResource( 3 )]
 margin_left = 10.0
 margin_top = 963.0
 margin_right = 358.0
@@ -97,8 +101,9 @@ margin_top = -43.0
 margin_right = -60.0
 margin_bottom = 50.0
 
-[node name="InfoTiempoRestante" parent="." instance=ExtResource( 3 )]
-modulate = Color( 1, 1, 1, 1 )
+[node name="InfoTiempoRestante" parent="." groups=[
+"contenedor_info",
+] instance=ExtResource( 3 )]
 margin_left = 1583.96
 margin_top = 11.1065
 margin_right = 1904.96
@@ -112,6 +117,34 @@ margin_bottom = 78.1715
 text = "TIEMPO RESTANTE
               mm:ss"
 
+[node name="EnergiaLaser" parent="." groups=[
+"contenedor_info",
+] instance=ExtResource( 4 )]
+margin_left = 1640.0
+margin_top = 968.0
+margin_right = 1915.0
+margin_bottom = 1072.0
+
+[node name="Label" parent="EnergiaLaser" index="1"]
+text = "ENERGIA laser"
+
+[node name="EnergiaEscudo" parent="." groups=[
+"contenedor_info",
+] instance=ExtResource( 4 )]
+margin_left = 1352.0
+margin_top = 968.0
+margin_right = 1627.0
+margin_bottom = 1072.0
+
+[node name="Label" parent="EnergiaEscudo" index="1"]
+text = "ENERGIA escudo"
+
+[node name="MiniMapa" parent="." groups=[
+"contenedor_info",
+] instance=ExtResource( 5 )]
+
 [editable path="InfoZonaRecarga"]
 [editable path="InfoMeteoritos"]
 [editable path="InfoTiempoRestante"]
+[editable path="EnergiaLaser"]
+[editable path="EnergiaEscudo"]
