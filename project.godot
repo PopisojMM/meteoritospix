@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "ProgressBar",
+"class": "BarraSalud",
+"language": "GDScript",
+"path": "res://juego/UI/BarraSalud/BarraSalud.gd"
+}, {
 "base": "Node2D",
 "class": "BaseEnemiga",
 "language": "GDScript",
@@ -125,6 +130,7 @@ _global_script_classes=[ {
 "path": "res://juego/Meteoritos/SectorMeteoritos.gd"
 } ]
 _global_script_class_icons={
+"BarraSalud": "",
 "BaseEnemiga": "",
 "CamaraJuego": "",
 "CamaraPlayer": "",
@@ -160,6 +166,7 @@ config/icon="res://icono_juego.png"
 
 Eventos="*res://juego/Autoloads/Eventos.gd"
 DatosJuego="*res://juego/Autoloads/DatosJuego.gd"
+MusicaJuego="*res://juego/Autoloads/MusicaJuego.tscn"
 
 [display]
 

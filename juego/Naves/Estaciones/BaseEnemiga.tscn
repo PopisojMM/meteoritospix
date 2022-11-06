@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://juego/Naves/Estaciones/AreaAtraccion.tscn" type="PackedScene" id=1]
 [ext_resource path="res://recursos/Naves/spaceStation_024.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://juego/Naves/Enemigos/EnemigoOrbital.tscn" type="PackedScene" id=8]
 [ext_resource path="res://juego/Naves/Estaciones/PosicionesSpawn.gd" type="Script" id=9]
 [ext_resource path="res://juego/Naves/Estaciones/RutaEnemigo.gd" type="Script" id=10]
+[ext_resource path="res://juego/UI/BarraSalud/BarraSalud.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 62.7729
@@ -127,6 +128,15 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -387.239, -9.73816, -18.3786, 16.3365, 18.3786, -16.3365, -377.029, -71.0001, 1.02103, 26.5468, -1.02103, -26.5468, -343.335, -113.883, 0, 0, 0, 0, -377.782, -187.881, -2.25603, 30.9384, 2.25603, -30.9384, -366.009, -244.221, 21.4417, 45.9464, -21.4417, -45.9464, -324.805, -314.857, -22.4627, 22.4627, 22.4627, -22.4627, -281.079, -380.447, -13.2734, 34.7151, 13.2734, -34.7151, -199.369, -364.036, 0, 0, 0, 0, -133.002, -392.625, 0, 0, 0, 0, -68.677, -400.793, -27.5679, -39.8202, 27.5679, 39.8202, -14.5623, -394.667, -28.5889, 40.8413, 28.5889, -40.8413, 23.2159, -391.604, -45.9464, 25.5258, 45.9464, -25.5258, 68.1412, -401.814, 0, 0, 0, 0, 140.634, -385.478, -27.4855, -13.2672, 27.4855, 13.2672, 228.661, -386.272, 0, 0, 0, 0, 276.744, -353.745, 2.04206, -37.7782, -2.04206, 37.7782, 341.798, -281.62, 0, 0, 0, 0, 377.514, -204.755, 0, 0, 0, 0, 367.303, -166.977, -13.2734, -43.9044, 13.2734, 43.9044, 364.24, -88.3576, -3.06309, -47.9885, 3.06309, 47.9885, 411.208, -35.264, 19.3996, -29.6099, -19.3996, 29.6099, 381.598, 18.8507, 0, 0, 0, 0, 370.367, 167.921, 19.3996, -22.4627, -19.3996, 22.4627, 363.219, 260.835, 34.7151, -19.3996, -34.7151, 19.3996, 333.609, 295.55, 60.2409, 12.2524, -60.2409, -12.2524, 265.2, 309.845, 61.2619, 5.10516, -61.2619, -5.10516, 227.422, 369.065, 31.652, 5.10516, -31.652, -5.10516, 96.7302, 378.254, 43.9044, 11.2313, -43.9044, -11.2313, -12.5202, 385.401, 46.9674, -15.3155, -46.9674, 15.3155, -144.233, 354.77, 0, 0, 0, 0, -272.883, 343.539, 49.0095, 21.4417, -49.0095, -21.4417, -328.019, 270.024, -5.10516, 26.5468, 5.10516, -26.5468, -333.124, 143.417, 0, 0, 0, 0, -373.965, 10.6825, 0, 0, 0, 0, -387.239, -9.73816 )
 }
 
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.623529, 0.0313726, 0.972549, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+
 [node name="BaseEnemiga" type="Node2D"]
 z_index = 45
 z_as_relative = false
@@ -204,6 +214,15 @@ curve = SubResource( 5 )
 script = ExtResource( 10 )
 
 [node name="TimerSpawnerEnemigos" type="Timer" parent="."]
+
+[node name="BarraSalud" parent="." instance=ExtResource( 11 )]
+margin_left = -77.0272
+margin_top = -272.005
+margin_right = 83.9728
+margin_bottom = -250.005
+rect_rotation = 0.0
+custom_styles/fg = SubResource( 6 )
+siempre_visible = true
 
 [connection signal="body_entered" from="AreaColision" to="." method="_on_AreaColision_body_entered"]
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
