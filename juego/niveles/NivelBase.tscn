@@ -1,0 +1,63 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://default_env.tres" type="Environment" id=1]
+[ext_resource path="res://juego/niveles/Musicas/combate.wav" type="AudioStream" id=2]
+[ext_resource path="res://juego/niveles/Musicas/nivel.wav" type="AudioStream" id=3]
+[ext_resource path="res://juego/niveles/Nivel.gd" type="Script" id=4]
+[ext_resource path="res://juego/niveles/CamaraJuego.gd" type="Script" id=5]
+[ext_resource path="res://juego/Explosiones/Explosion.tscn" type="PackedScene" id=6]
+[ext_resource path="res://juego/Naves/Player/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://juego/Meteoritos/Meteorito.tscn" type="PackedScene" id=8]
+[ext_resource path="res://juego/Naves/Estaciones/ReleMasa.tscn" type="PackedScene" id=9]
+[ext_resource path="res://juego/Meteoritos/SectorMeteoritos.tscn" type="PackedScene" id=10]
+[ext_resource path="res://juego/Explosiones/ExplosionMeteorito.tscn" type="PackedScene" id=11]
+[ext_resource path="res://juego/Naves/Enemigos/EnemigoInterceptor.tscn" type="PackedScene" id=12]
+[ext_resource path="res://juego/UI/HUD.tscn" type="PackedScene" id=13]
+[ext_resource path="res://juego/niveles/Fondos/StarFieldBackground.tscn" type="PackedScene" id=14]
+
+[node name="NivelBase" type="Node2D"]
+script = ExtResource( 4 )
+explosion = ExtResource( 6 )
+meteorito = ExtResource( 8 )
+explosion_meteorito = ExtResource( 11 )
+sector_meteoritos = ExtResource( 10 )
+enemigo_interceptor = ExtResource( 12 )
+rele_masa = ExtResource( 9 )
+tiempo_limite = 90
+musica_nivel = ExtResource( 3 )
+musica_combate = ExtResource( 2 )
+
+[node name="HUD" parent="." instance=ExtResource( 13 )]
+
+[node name="TriggersLLuviaMeteoritos" type="Node" parent="."]
+
+[node name="TriggersInterceptores" type="Node" parent="."]
+
+[node name="ContenedorEstaciones" type="Node" parent="."]
+
+[node name="ContenedorBasesEnemigas" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 1 )
+
+[node name="CamaraNivel" type="Camera2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="TweenZoom" type="Tween" parent="CamaraNivel"]
+
+[node name="TweenCamara" type="Tween" parent="."]
+
+[node name="RestartTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ActualizadorTimer" type="Timer" parent="."]
+
+[node name="StarFieldBackground" parent="." instance=ExtResource( 14 )]
+
+[node name="Player" parent="." instance=ExtResource( 7 )]
+position = Vector2( 3296.29, -822.9 )
+hitpoints = 20.0
+
+[connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
+[connection signal="timeout" from="RestartTimer" to="." method="_on_RestartTimer_timeout"]
+[connection signal="timeout" from="ActualizadorTimer" to="." method="_on_ActualizadorTimer_timeout"]

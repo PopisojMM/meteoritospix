@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://recursos/Fonts/Kenney High Square.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://juego/UI/MenuPrincipal.gd" type="Script" id=2]
+[ext_resource path="res://juego/UI/teclado.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 130
@@ -13,6 +14,7 @@ font_data = ExtResource( 1 )
 
 [node name="MenuPrincipal" type="Node"]
 script = ExtResource( 2 )
+nivel_inicial = "res://juego/niveles/Nivel1.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -29,14 +31,44 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -287.5
-margin_top = -137.0
-margin_right = 287.5
-margin_bottom = 137.0
+margin_left = -799.782
+margin_top = -356.112
+margin_right = -159.782
+margin_bottom = -175.112
 custom_fonts/font = SubResource( 1 )
 text = "JUGAR"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="BotonSalir" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 214.242
+margin_top = -317.727
+margin_right = 681.242
+margin_bottom = -196.727
+custom_fonts/font = SubResource( 1 )
+text = "SALIR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "
+ASDASD"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controles" type="Sprite" parent="."]
+position = Vector2( 962.275, 824.995 )
+scale = Vector2( 1.35166, 1.24595 )
+texture = ExtResource( 3 )
+
 [connection signal="pressed" from="BotonJugar" to="." method="_on_BotonJugar_pressed"]
+[connection signal="pressed" from="BotonSalir" to="." method="_on_BotonSalir_pressed"]

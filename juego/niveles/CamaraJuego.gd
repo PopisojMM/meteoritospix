@@ -3,9 +3,9 @@ class_name CamaraJuego
 extends Camera2D
 
 ## Atributos Export
-#export var variacion_zoom:float = 0.1
-#export var zoom_minimo: float = 0.8
-#export var zoom_maximo: float = 1.5
+export var variacion_zoom:float = 0.1
+export var zoom_minimo: float = 0.8
+export var zoom_maximo: float = 1.5
 
 ## Atributos
 var zoom_original:Vector2
