@@ -1,18 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://juego/niveles/NivelBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://juego/Naves/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=2]
 [ext_resource path="res://juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=3]
+[ext_resource path="res://juego/Naves/Estaciones/EstacionRecarga.tscn" type="PackedScene" id=4]
 
 [node name="Nivel1" instance=ExtResource( 1 )]
+tiempo_limite = 180
 prox_nivel = "res://juego/niveles/Nivel2.tscn"
 
 [node name="SectorDePeligro" parent="TriggersLLuviaMeteoritos" index="0" instance=ExtResource( 3 )]
-position = Vector2( 2269.23, -827.602 )
+position = Vector2( 1438.96, -856.042 )
 tipo_peligro = "Meteorito"
 
+[node name="EstacionRecarga" parent="ContenedorEstaciones" index="0" instance=ExtResource( 4 )]
+position = Vector2( 3103.42, -947.198 )
+
 [node name="BaseEnemiga" parent="ContenedorBasesEnemigas" index="0" instance=ExtResource( 2 )]
-position = Vector2( 4224.94, -906.948 )
+position = Vector2( 4678.79, -1430.21 )
 
 [node name="Player" parent="." index="11"]
 position = Vector2( 759.863, -869.498 )

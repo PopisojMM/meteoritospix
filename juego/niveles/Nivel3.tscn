@@ -1,6 +1,48 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://juego/niveles/NivelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=2]
+[ext_resource path="res://juego/Naves/Estaciones/EstacionRecarga.tscn" type="PackedScene" id=3]
+[ext_resource path="res://juego/Naves/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=4]
 
 [node name="Nivel3" instance=ExtResource( 1 )]
+tiempo_limite = 240
 prox_nivel = "res://juego/niveles/Nivel4.tscn"
+
+[node name="SectorDePeligro" parent="TriggersLLuviaMeteoritos" index="0" instance=ExtResource( 2 )]
+position = Vector2( -1199.25, -1040.86 )
+tipo_peligro = "Meteorito"
+
+[node name="SectorDePeligro2" parent="TriggersLLuviaMeteoritos" index="1" instance=ExtResource( 2 )]
+position = Vector2( 1482.1, -1255.82 )
+tipo_peligro = "Meteorito"
+
+[node name="SectorDePeligro4" parent="TriggersLLuviaMeteoritos" index="2" instance=ExtResource( 2 )]
+position = Vector2( -3722.21, 226.274 )
+tipo_peligro = "Meteorito"
+
+[node name="SectorDePeligro3" parent="TriggersLLuviaMeteoritos" index="3" instance=ExtResource( 2 )]
+position = Vector2( 3111.27, 67.8822 )
+tipo_peligro = "Meteorito"
+
+[node name="SectorDePeligro5" parent="TriggersLLuviaMeteoritos" index="4" instance=ExtResource( 2 )]
+position = Vector2( 124.451, 2217.49 )
+tipo_peligro = "Meteorito"
+
+[node name="EstacionRecarga" parent="ContenedorEstaciones" index="0" instance=ExtResource( 3 )]
+position = Vector2( -1454.56, 750.738 )
+
+[node name="EstacionRecarga2" parent="ContenedorEstaciones" index="1" instance=ExtResource( 3 )]
+position = Vector2( 2765.85, 955.429 )
+
+[node name="BaseEnemiga" parent="ContenedorBasesEnemigas" index="0" instance=ExtResource( 4 )]
+position = Vector2( -3208.25, -1862.28 )
+
+[node name="BaseEnemiga2" parent="ContenedorBasesEnemigas" index="1" instance=ExtResource( 4 )]
+position = Vector2( -3819.19, 2255.91 )
+
+[node name="BaseEnemiga3" parent="ContenedorBasesEnemigas" index="2" instance=ExtResource( 4 )]
+position = Vector2( 3331.07, -1556.81 )
+
+[node name="Player" parent="." index="11"]
+position = Vector2( 135.442, -643.306 )

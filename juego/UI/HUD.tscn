@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://icono_juego.png" type="Texture" id=1]
 [ext_resource path="res://juego/UI/HUD.gd" type="Script" id=2]
 [ext_resource path="res://juego/UI/ContenedorInformacion.tscn" type="PackedScene" id=3]
 [ext_resource path="res://juego/UI/ContenedorInformacionEnergia.tscn" type="PackedScene" id=4]
 [ext_resource path="res://juego/UI/MiniMapa/MiniMapa.tscn" type="PackedScene" id=5]
+[ext_resource path="res://juego/UI/MenuPausa.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -142,6 +143,9 @@ text = "ENERGIA escudo"
 [node name="MiniMapa" parent="." groups=[
 "contenedor_info",
 ] instance=ExtResource( 5 )]
+
+[node name="MenuPausa" parent="." instance=ExtResource( 6 )]
+visible = false
 
 [editable path="InfoZonaRecarga"]
 [editable path="InfoMeteoritos"]

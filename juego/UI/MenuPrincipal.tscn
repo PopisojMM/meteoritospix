@@ -21,6 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -2.66968
 margin_right = -2.66968
+mouse_filter = 1
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -52,15 +53,6 @@ margin_right = 681.242
 margin_bottom = -196.727
 custom_fonts/font = SubResource( 1 )
 text = "SALIR"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "
-ASDASD"
 __meta__ = {
 "_edit_use_anchors_": false
 }

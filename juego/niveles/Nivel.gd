@@ -167,7 +167,7 @@ func _on_nave_destruida(nave: Player, posicion: Vector2) -> void:
 			camara_nivel,
 			tiempo_transicion_camara
 		)
-	$RestartTimer.start()
+		$RestartTimer.start()
 	var new_explosion:Node2D = explosion.instance()
 	new_explosion.global_position = posicion
 	add_child(new_explosion)
