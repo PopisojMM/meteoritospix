@@ -5,10 +5,12 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("pausa"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		visible = not visible
 		get_tree().paused = not get_tree().paused
 
 func _on_BotonContinuar_pressed():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	get_tree().paused = false
 	visible = false
 
